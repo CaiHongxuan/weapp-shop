@@ -76,13 +76,13 @@
             </navigator>
         </view>
     </view>
-    <view class="category" style="height: {{ windowHeight-70}}px">
-        <scroll-view class="left_category" scroll-y="true" scroll-with-animation="true" style="height: {{windowHeight-55}}px">
+    <view class="category" style="height: {{ windowHeight-120}}px">
+        <scroll-view class="left_category" scroll-y="true" scroll-with-animation="true" style="height: {{windowHeight-105}}px">
             <view class="name {{item.active ? 'active' : ''}}" wx:for="{{rootCateList}}" wx:key="item" @tap="changeCate" data-code="{{item.code}}">
                 {{item.name}}
             </view>
         </scroll-view>
-        <scroll-view class="category_detail" scroll-y="true" scroll-with-animation="true" style="height: {{windowHeight-70}}px">
+        <scroll-view class="category_detail" scroll-y="true" scroll-with-animation="true" style="height: {{windowHeight-120}}px">
             <view class="children" wx:for="{{childCateList}}" wx:for-item="item" wx:key="index">
                 <view class="child_second_name" data-code="{{item.code}}">{{item.name}}</view>
                 <view class="third_children">
@@ -98,6 +98,7 @@
 
 <script>
     import wepy from '@wepy/core'
+    import api from '@/api/api'
 
     wepy.page({
         data: {
@@ -108,27 +109,33 @@
         methods: {
             async getChildCate(rootCateCode) {
                 // 根据一级分类获取二级、三级分类
-                this.childCateList = [{"name":"二级分类1","code":"21","thirdCategory":[{"name":"三级级分类1","code":"31","thumLogo":""},{"name":"三级级分类2","code":"32","thumLogo":""}]},{"name":"二级分类2","code":"22","thirdCategory":[{"name":"三级分类3","code":"33","thumLogo":""}]},{"name":"二级分类3","code":"23","thirdCategory":[{"name":"三级分类4","code":"34","thumLogo":""}]},{"name":"二级分类4","code":"24","thirdCategory":[{"name":"三级分类5","code":"35","thumLogo":""},{"name":"三级分类9","code":"39","thumLogo":""}]},{"name":"二级分类5","code":"25","thirdCategory":[{"name":"三级分类6","code":"36","thumLogo":""}]},{"name":"二级分类6","code":"26","thirdCategory":[{"name":"三级分类7","code":"37","thumLogo":""},{"name":"三级分类8","code":"38","thumLogo":""},{"name":"三级分类10","code":"310","thumLogo":""},{"name":"三级分类11","code":"311","thumLogo":""}]}]
+                const json = await api.childrenCategoryList({query: {}})
+                if (json.list instanceof Array) {
+                    this.childCateList = json.list
+                }
             },
             async getRootCateTopLevel() {
                 // 初始化一级分类
-                this.rootCateList = [{"name":"分类1","code":"1","active":false},{"name":"一级分类2","code":"2","active":false},{"name":"一级分类3","code":"3","active":false},{"name":"一级分类4","code":"4","active":false},{"name":"分类5","code":"5","active":false},{"name":"一级分类6","code":"6","active":false},{"name":"一级分类7","code":"7","active":false},{"name":"一级分类8","code":"8","active":false},{"name":"类9","code":"9","active":false},{"name":"一级分类10","code":"10","active":false},{"name":"一级分类11","code":"11","active":false},{"name":"一级分类12","code":"12","active":false},{"name":"一级分类13","code":"13","active":false},{"name":"一级分类14","code":"14","active":false},{"name":"一级分类15","code":"15","active":false},{"name":"一级分类16","code":"16","active":false},{"name":"一级分类17","code":"17","active":false}]
-                if (this.rootCateList.length > 0) {
-                    let curRootCateCode = wx.getStorageSync('curRootCateCode')
-                    let activeCateCode = this.rootCateList[0].code
-                    if (curRootCateCode.length == 0) {
-                        this.rootCateList[0].active = true
-                    } else {
-                        for (var i = 0; i < this.rootCateList.length; i++) {
-                            var rootCate = this.rootCateList[i]
-                            rootCate.active = false
-                            if (curRootCateCode == rootCate.code) {
-                                activeCateCode = rootCate.code
-                                rootCate.active = true
+                const json = await api.rootCategoryList({query: {}})
+                if (json.list instanceof Array) {
+                    this.rootCateList = json.list
+                    if (this.rootCateList.length > 0) {
+                        let curRootCateCode = wx.getStorageSync('curRootCateCode')
+                        let activeCateCode = this.rootCateList[0].code
+                        if (curRootCateCode.length == 0) {
+                            this.rootCateList[0].active = true
+                        } else {
+                            for (var i = 0; i < this.rootCateList.length; i++) {
+                                var rootCate = this.rootCateList[i]
+                                rootCate.active = false
+                                if (curRootCateCode == rootCate.code) {
+                                    activeCateCode = rootCate.code
+                                    rootCate.active = true
+                                }
                             }
                         }
+                        this.getChildCate(activeCateCode)
                     }
-                    this.getChildCate(activeCateCode)
                 }
             },
             changeCate(e) {

@@ -1,7 +1,7 @@
 <style lang="less">
     @import "../static/styles/style";
     @import "../static/styles/base";
-    @import "../static/styles/icon";
+    /*@import "../static/styles/icon";*/
 </style>
 
 <script>
@@ -30,17 +30,17 @@
                 console.log('app-launch event emitted, the params are:')
                 console.log(args)
             })
-            wx.getSystemInfo({
-                success (res) {
-                    wx.setStorage({
-                        key:"systemInfo",
-                        data: {
-                            "windowHeight": res.windowHeight,
-                            "windowWidth": res.windowWidth,
-                        }
-                    })
-                }
-            })
+            // wx.getSystemInfo({
+            //     success (res) {
+            //         wx.setStorage({
+            //             key:"systemInfo",
+            //             data: {
+            //                 "windowHeight": res.windowHeight,
+            //                 "windowWidth": res.windowWidth
+            //             }
+            //         })
+            //     }
+            // })
         },
 
         methods: {
@@ -61,6 +61,7 @@
 <config>
     {
     pages: [
+        'pages/authorize',
         'pages/category',
         'pages/index'
     ],

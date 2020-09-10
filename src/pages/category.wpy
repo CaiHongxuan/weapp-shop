@@ -70,7 +70,7 @@
 <template>
     <view class="top_search">
         <view class="search_read_only">
-            <navigator class="search_content" url="/pages/index">
+            <navigator class="search_content" open-type="navigate" url="/pages/search">
                 <i class="iconfont icon-search"></i>
                 <view class="search_input">搜索商品</view>
             </navigator>

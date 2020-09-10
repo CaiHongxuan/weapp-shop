@@ -1,7 +1,7 @@
 # weapp-shop
-基于wepy开发的小程序商城
+基于 wepy 2.1 开发的小程序商城，接口数据由 mock 进行模拟生成
 
-## 安装wepy命令行工具
+## 安装 wepy 命令行工具
 ```
 npm install wepy-cli -g
 ```
@@ -20,3 +20,6 @@ wepy build --watch / npm run dev
 ```
 npm run build
 ```
+
+## 效果图
+![分类](./resources/category.jpg)

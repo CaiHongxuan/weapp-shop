@@ -63,7 +63,8 @@
     pages: [
         'pages/authorize',
         'pages/category',
-        'pages/index'
+        'pages/index',
+        'pages/search'
     ],
     window: {
         backgroundTextStyle: 'light',

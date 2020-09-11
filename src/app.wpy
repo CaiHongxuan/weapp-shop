@@ -1,7 +1,7 @@
 <style lang="less">
     @import "../static/styles/style";
     @import "../static/styles/base";
-    /*@import "../static/styles/icon";*/
+    @import "../static/styles/icon";
 </style>
 
 <script>

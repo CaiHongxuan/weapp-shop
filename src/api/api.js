@@ -1,27 +1,27 @@
-const wxRequest = async(params = {}, url) => {
-    // todo loading
-    let data = params.query || {}
-    let method = params.method || 'GET'
-    let result = new Promise((resolve, reject) => {
-        wx.request({
-            url: url,
-            method: method,
-            data: data,
-            header: {
-                'content-type': 'application/json'
-            },
-            success (res) {
-                console.log("wxRequest.success", res)
-                resolve(res.data)
-            },
-            fail (res) {
-                console.log("wxRequest.error", res)
-                reject(res)
-            }
-        })
+const wxRequest = async (params = {}, url) => {
+  // todo loading
+  let data = params.query || {}
+  let method = params.method || 'GET'
+  let result = new Promise((resolve, reject) => {
+    wx.request({
+      url: url,
+      method: method,
+      data: data,
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res) {
+        console.log("wxRequest.success", res)
+        resolve(res.data)
+      },
+      fail(res) {
+        console.log("wxRequest.error", res)
+        reject(res)
+      }
     })
-    // todo end load
-    return result
+  })
+  // todo end load
+  return result
 }
 
 // 使用fastmock模拟数据
@@ -33,7 +33,11 @@ const rootCategoryList = (params) => wxRequest(params, apiBaseUrl + '/root-cate-
 // 通过一级分类获取二三级分类
 const childrenCategoryList = (params) => wxRequest(params, apiBaseUrl + '/children-cate-list')
 
+// 获取历史搜索关键词
+const getHisKeywordList = (params) => wxRequest(params, apiBaseUrl + '/his-keywords')
+
 export default {
-    rootCategoryList,
-    childrenCategoryList
+  rootCategoryList,
+  childrenCategoryList,
+  getHisKeywordList
 }

@@ -45,10 +45,12 @@
 
 <template>
     <view class="container">
+        <!-- 搜索栏 -->
         <search @searchValue.user="doSearch"></search>
         <filterBar wx:if="{{list.length > 0 || skuval !== ''}}" @currentType.user="currentType"></filterBar>
         <view wx:if="{{list.length>0}}">
-
+            <!-- 商品列表模块 -->
+            <shopGridList :purchasetype.sync="purchasetype" :list.sync="list"></shopGridList>
         </view>
         <view wx:else class="history {{show?'':'hidden'}}">
             <view class="doc">历史记录</view>
@@ -60,6 +62,10 @@
             <view class="btn-box">
                 <view class="button type-empty" @tap.stop="clearHis">清除历史记录</view>
             </view>
+        </view>
+        <view>
+            <bottomLoadMore :show.sync="showLoading" message="正在加载"></bottomLoadMore>
+            <placeholder :show.sync="isEmpty" message="暂无发现数据"></placeholder>
         </view>
     </view>
 </template>
@@ -104,11 +110,24 @@
     },
     computed: {},
     methods: {
-      async doSearchGoods(keyword) {
-        // todo get goods
-        const json = []
-        this.list = json
-        console.log('doSearchGoods', keyword)
+      async doSearchGoods(keyword, currentPage, size) {
+        const json = await api.goodsList({
+          query: {
+            'title': keyword,
+            'page': currentPage || 1,
+            'size': size || 10,
+            'sort': this.sort
+          }
+        })
+        if (json.list instanceof Array) {
+          this.list = [...this.list, ...json.list]
+          this.pageTotal = 5
+          if (this.list.length === 0) {
+            this.isEmpty = true
+          }
+        }
+        this.showLoading = false
+        console.log('doSearchGoods', keyword, currentPage, size, json)
       },
       async getHisKeywordList() {
         let userSpecialInfo = wx.getStorageSync('userSpecialInfo') || {}
@@ -135,7 +154,9 @@
       },
       doSearch(val) {
         this.list = []
+        this.currentPage = 1
         this.isEmpty = false
+        this.show = false
         this.showLoading = true
         this.keyword = val
         this.doSearchGoods(val)
@@ -158,11 +179,12 @@
           this.skuval = type
         }
         this.list = []
+        this.currentPage = 1
         this.isEmpty = false
-        this.showLoading = true
         this.show = false
+        this.showLoading = true
         this.doSearchGoods(this.keyword)
-        console.log('currentType')
+        console.log('currentType', obj)
       },
       selHisKeyword(e) {
         let id = e.currentTarget.dataset.id
@@ -175,6 +197,8 @@
           }
         }
         if (hisKeyword.length > 0) {
+          this.show = false
+          this.showLoading = true
           this.keyword = hisKeyword
           this.doSearchGoods(hisKeyword)
         }
@@ -184,6 +208,22 @@
         this.clearUserKeywords()
         console.log('clearHis')
       }
+    },
+    onReachBottom() {
+      let that = this
+      that.showLoading = true
+      console.log(that.pageTotal + '===' + that.currentPage)
+      if (that.pageTotal > that.currentPage) {
+        if (that.preventRepeatRequest) {
+          return true
+        }
+        that.preventRepeatRequest = true
+        that.currentPage++
+        that.doSearchGoods('', that.currentPage)
+        that.preventRepeatRequest = false
+      } else {
+        that.showLoading = false
+      }
     }
   })
 </script>
@@ -192,7 +232,10 @@
         navigationBarTitleText: '搜索',
         usingComponents: {
             search: '~@/components/search',
-            filterBar: '~@/components/filter-bar'
+            filterBar: '~@/components/filter-bar',
+            shopGridList: '~@/components/shop-grid-list',
+            bottomLoadMore: '~@/components/bottom-load-more',
+            placeholder: '~@/components/placeholder'
         }
     }
 </config>

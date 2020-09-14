@@ -36,8 +36,12 @@ const childrenCategoryList = (params) => wxRequest(params, apiBaseUrl + '/childr
 // 获取历史搜索关键词
 const getHisKeywordList = (params) => wxRequest(params, apiBaseUrl + '/his-keywords')
 
+// 获取商品列表
+const goodsList = (params) => wxRequest(params, apiBaseUrl + '/goods-list')
+
 export default {
   rootCategoryList,
   childrenCategoryList,
-  getHisKeywordList
+  getHisKeywordList,
+  goodsList
 }

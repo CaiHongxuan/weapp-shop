@@ -64,7 +64,8 @@
         'pages/authorize',
         'pages/category',
         'pages/index',
-        'pages/search'
+        'pages/search',
+        'pages/goods-detail'
     ],
     window: {
         backgroundTextStyle: 'light',

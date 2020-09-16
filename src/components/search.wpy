@@ -52,10 +52,10 @@
         <view class="search">
             <view class="search-content">
                 <i class="iconfont icon-search"></i>
-                <input type="text" name="search-input" bindinput="searchInput" class="search-input" focus="true" value="{{search_input_value}}" confirm-type="search" placeholder="搜索商品" />
-                <i wx:if="{{search_input_value!=''}}" @tap="delText" class="iconfont icon-del"></i>
+                <input type="text" name="search-input" bindinput="searchInput" class="search-input" focus="true" value="{{searchInputValue}}" confirm-type="search" placeholder="搜索商品" />
+                <i wx:if="{{searchInputValue!=''}}" @tap="delText" class="iconfont icon-del"></i>
             </view>
-            <button wx:if="{{search_input_value==''}}" class="btn btn-cancel" @tap="goBack()">取消</button>
+            <button wx:if="{{searchInputValue==''}}" class="btn btn-cancel" @tap="goBack()">取消</button>
             <button wx:else class="btn btn-search" @tap="search()">搜索</button>
         </view>
     </view>
@@ -65,16 +65,19 @@
     import wepy from '@wepy/core'
 
     wepy.component({
+      props: {
+        searchInputValue: ''
+      },
       data: {
         show: 1,
-        search_input_value: ''
+        searchInputValue: ''
       },
       methods: {
         searchInput(e) {
-          this.search_input_value = e.$wx.detail.value
+          this.searchInputValue = e.$wx.detail.value
         },
         delText() {
-          this.search_input_value = ''
+          this.searchInputValue = ''
         },
         goBack() {
           wx.navigateBack({
@@ -82,7 +85,7 @@
           })
         },
         search() {
-          this.$emit('searchValue', this.search_input_value)
+          this.$emit('searchValue', this.searchInputValue)
         }
       }
     })

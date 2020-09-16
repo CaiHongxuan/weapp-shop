@@ -86,7 +86,7 @@
             <view class="children" wx:for="{{childCateList}}" wx:for-item="item" wx:key="index">
                 <view class="child_second_name" data-code="{{item.code}}">{{item.name}}</view>
                 <view class="third_children">
-                    <navigator hover-class="none" class="children_item" wx:for="{{item.thirdCategory}}" wx:for-item="thirdCategory" wx:key="thirdIndex" url="/pages/index">
+                    <navigator hover-class="none" class="children_item" wx:for="{{item.thirdCategory}}" wx:for-item="thirdCategory" wx:key="thirdIndex" url="/pages/search?cateCode={{thirdCategory.code}}">
                         <image class="child_image" src="{{thirdCategory.thumLogo}}"></image>
                         <view class="child_name" data-code="{{thirdCategory.code}}">{{thirdCategory.name}}</view>
                     </navigator>

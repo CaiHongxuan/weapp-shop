@@ -1,0 +1,474 @@
+<style lang="less">
+    .swiper {
+        height: 662rpx;
+    }
+    .slide-image {
+        width: 100%;
+        height: 100%;
+    }
+    .big-images {
+        height: 100%;
+        display: block;
+        margin-bottom: 90rpx;
+        image {
+            width: 100%;
+        }
+    }
+    .detail-msg {
+        border-top: 1px solid #ededed;
+        padding: 30rpx;
+        background: #ffffff;
+        .detail-title {
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            font-size: 30rpx;
+            color: #333333;
+        }
+        .detail-introduction {
+            color: #999999;
+            font-size: 28rpx;
+            line-height: 40rpx;
+            margin-top: 20rpx;
+        }
+        .detail-pinfo {
+            padding: 20rpx 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            .price {
+                color: #f73c3c;
+                font-size: 45rpx;
+            }
+            .other-price {
+                font-size: 28rpx;
+                padding-left: 40rpx;
+            }
+            .baoyou {
+                color: #808080;
+                font-size: 28rpx;
+                margin-top: 20rpx;
+            }
+        }
+        .order-num {
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 108rpx;
+            border-top: 1px solid #efefef;
+            border-bottom: 1px solid #efefef;
+            padding: 0 30rpx;
+            .doc {
+                color: #808080;
+                .num {
+                    color: #f73c3c;
+                }
+            }
+        }
+        .block {
+            padding: 27rpx 0rpx;
+            background: #fff;
+            .block-title {
+                color: #000;
+                height: 30rpx;
+                line-height: 30rpx;
+                border-left: 6px solid #f73c3c;
+                padding-left: 20rpx;
+            }
+            .block-content {
+                padding: 38rpx 22rpx;
+                .process {
+                    font-size: 20rpx;
+                    margin: 0 auto;
+                    border: 1px solid #999999;
+                    padding: 10rpx;
+                    border-radius: 200px;
+                    text-align: center;
+                    margin-bottom: 25rpx;
+                    color: #808080;
+                }
+                .doc {
+                    color: #808080;
+                    font-size: 26rpx;
+                    line-height: 30rpx;
+                }
+            }
+            .table {
+                margin: 0 auto;
+                margin-top: -24rpx;
+                .th {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 24rpx;
+                }
+                .tr {
+                    font-size: 26rpx;
+                    color: #808080;
+                    text-align: left;
+                    flex: 1;
+                }
+            }
+        }
+
+        .detail-bottom {
+            width: 100%;
+            border-top: 1px solid #ededed;
+            position: fixed;
+            bottom: 0;
+            background: #fff;
+            z-index: 1001;
+            .bottom-box {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                position: relative;
+                .contact {
+                    width: 100rpx;
+                    height: 80rpx;
+                    margin: 0 auto;
+                    position: absolute;
+                    text-align: center;
+                    line-height: 80rpx;
+                    left: 100rpx; // 在客服上面
+                    opacity: 0;
+                }
+            }
+            .sy-bottom {
+                padding: 15rpx 40rpx;
+                height: 60rpx;
+                line-height: 60rpx;
+                font-size: 30rpx;
+            }
+            .btn-order {
+                background: #ff4856;
+                color: #fff;
+            }
+            .btn-cart {
+                color: #fff;
+                background: #ff6e30;
+            }
+            .order-color {
+                background: #A9A9A9;
+                color: #fff;
+            }
+            .cart-color {
+                color: #fff;
+                background: #A9A9A9;
+            }
+            .item:first-child {
+                border-right: 1px solid #efefef;
+            }
+            .item {
+                flex: 1;
+                text-align: center;
+                .doc {
+                    font-size: 24rpx;
+                }
+            }
+            .selec-active {
+                .doc {
+                    color: #ff4856;
+                }
+                .iconfont {
+                    color: #ff4856;
+                }
+            }
+        }
+
+        .over-model {
+            position: fixed;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            width: 100%;
+            height: 100%;
+            top: 0;
+        }
+
+        .head-box {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #efefef;
+            padding-bottom: 26rpx;
+            .img-wrap {
+                height: 200rpx;
+                width: 200rpx;
+                background: #000;
+            }
+            .goods-img {
+                height: 200rpx;
+                width: 200rpx;
+                background: #000;
+            }
+            .product-wrap {
+                padding: 20rpx;
+            }
+            .product-name {
+                color: #666;
+            }
+            .price {
+                color: #e11500;
+                font-size: 36rpx;
+                padding-top: 32rpx;
+            }
+        }
+
+        .rule-box {
+            border-bottom: 1px solid #efefef;
+            padding-bottom: 26rpx;
+            .title {
+                color: #4c4c4c;
+                font-size: 32rpx;
+                margin-top: 10rpx;
+            }
+            .items {
+                display: flex;
+                flex-wrap: wrap;
+                margin-top: 5rpx;
+                margin-left: -20rpx;
+            }
+            .item {
+                padding: 15rpx 28rpx;
+                background: #e6e6e6;
+                color: #000;
+                margin-left: 20rpx;
+                margin-top: 10rpx;
+                border-radius: 10rpx;
+            }
+            .active {
+                background: #ed394a;
+                color: #fff;
+            }
+        }
+
+        .num-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15rpx 0rpx;
+            .title {
+                color: #4c4c4c;
+                font-size: 32rpx;
+            }
+        }
+
+        .buy-num {
+            width: 170rpx;
+            height: 48rpx;
+            line-height: 48rpx;
+            display: flex;
+            font-size: 24rpx;
+            text-align: center;
+            .jian-btn {
+                width: 48rpx;
+                height: 100%;
+                border-left: 1rpx solid #ccc;
+                border-bottom: 1rpx solid #ccc;
+                border-top: 1rpx solid #ccc;
+                border-bottom-left-radius: 6rpx;
+                border-top-left-radius: 6rpx;
+            }
+            .jian-btn.disabled {
+                background-color: #f5f5f9;
+                border-left: 1rpx solid #eee;
+                border-bottom: 1rpx solid #eee;
+                border-top: 1rpx solid #eee;
+                color: #ccc;
+            }
+            .jia-btn {
+                width: 48rpx;
+                height: 100%;
+                border-right: 1rpx solid #ccc;
+                border-bottom: 1rpx solid #ccc;
+                border-top: 1rpx solid #ccc;
+                border-bottom-right-radius: 6rpx;
+                border-top-right-radius: 6rpx;
+            }
+            .jia-btn.disabled {
+                background-color: #f5f5f9;
+                border-right: 1rpx solid #eee;
+                border-bottom: 1rpx solid #eee;
+                border-top: 1rpx solid #eee;
+                color: #ccc;
+            }
+            input {
+                width: 68rpx;
+                height: 48rpx;
+                min-height: 48rpx;
+                text-align: center;
+                font-size: 24rpx;
+                border: 1rpx solid #ccc;
+            }
+        }
+
+        .panel-model {
+            position: absolute;
+            height: 0rpx;
+            width: 100%;
+            z-index: 1002;
+            background: #fff;
+            bottom: 0;
+        }
+
+        .model-content {
+            padding: 20rpx;
+            position: relative;
+        }
+
+        .close-model {
+            position: absolute;
+            right: 10rpx;
+            top: 10rpx;
+            .icon-close {
+                color: #e11500;
+                font-size: 32rpx;
+            }
+        }
+
+        .confirm-btn {
+            height: 100rpx;
+            line-height: 100rpx;
+            width: 100%;
+            background: #ff6e30;
+            text-align: center;
+            color: #fff;
+            position: absolute;
+            bottom: 0;
+            z-index: 10003;
+        }
+
+        .button-more-comment {
+            font-size: 28rpx;
+            height: 55rpx;
+            line-height: 55rpx;
+            text-align: center;
+            margin: 20rpx auto;
+            width: 200rpx;
+            -moz-border-radius: 10rpx;
+            /* Firefox */
+            -webkit-border-radius: 10rpx;
+            /* Safari 和 Chrome */
+            border-radius: 10rpx;
+            /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+            color: #ff4856;
+            border: 1px solid #ff4856;
+        }
+    }
+</style>
+
+<template>
+    <view>
+        <swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" indicator-active-color="#ffc452" indicator-color="#efefef" class="swiper">
+            <block wx:for="{{detail.photoList}}" key="item" item="item" wx:key="key">
+                <swiper-item>
+                    <image class="slide-image" src="{{item.photo}}" data-src="{{item.photo}}" @tap="previewImage"></image>
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class="detail-msg">
+            <view class="detail-title">{{detail.name}}</view>
+            <view class="detail-pinfo">
+                <text class="price">¥{{detail.price}}</text>
+            </view>
+            <view class="baoyou">满{{detail.freeShipNum}}件包邮</view>
+        </view>
+        <view class="order-num">
+            <view class="doc">库存：<text class="num">{{detail.stockNum}}件</text></view>
+            <view class="doc">订单中：<text class="num">已拼{{detail.saleCount}}件</text></view>
+        </view>
+        <view class="block">
+            <view class="block-title">拼货流程</view>
+            <view class="block-content">
+                <view class="process">
+                    新款展示
+                    <i class="iconfont icon-next"></i>拼单结束
+                    <i class="iconfont icon-next"></i>生产商品
+                    <i class="iconfont icon-next"></i>商品检验
+                    <i class="iconfont icon-next"></i>商品发货
+                </view>
+                <view class="doc">如若出现特殊情况外，发货时间则会延迟5-10天左右。</view>
+            </view>
+            <view class="block-title">商品评价(999+)</view>
+            <view class="block-content">
+                <commentList :list.sync="commentList"></commentList>
+                <view class="button-more-comment" wx:if="{{commentList.length !== 0}}" @tap="moreComment">查看更多评论</view>
+            </view>
+        </view>
+        <view class="spacing"></view>
+        <view class="block">
+            <view class="block-title">拼单说明</view>
+            <view class="block-content">
+                <view class="doc">此商品在拼单期间可接收订单，如果超过拼单时间则不能下单；拼单结束后未付款订单系统将会自动取消，所以，下单以后请尽快付款。我们会以实际订单为准为您发货，如超过订单实际而又没有拼购到规定数量的，我们将会第一时间为您退款，请您放心购买！</view>
+            </view>
+        </view>
+        <view class="spacing"></view>
+        <view class="block">
+            <view class="block-title">商品信息</view>
+            <view class="block-content">
+                <view class="table">
+                    <view class="th" wx:for="{{detail.attrList}}" key="item" item="item" wx:key="key">
+                        <view class="tr1" wx:for="{{item}}" key="item" item="item" wx:key="key">{{item.attrName}}:{{item.attrVal}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="spacing"></view>
+        <view class="block">
+            <view class="block-title">商品详情</view>
+        </view>
+        <view class="big-images">
+            <view class="doc">
+                <view class="wxParse-p">
+                    <template is="wxParse" data="{{wxParseData:detailInfo.nodes}}"></template>
+                </view>
+            </view>
+        </view>
+        <view class="detail-bottom"></view>
+        <view class="over-mode"></view>
+        <view class="panel-model"></view>
+    </view>
+</template>
+
+<script>
+    import wepy from '@wepy/core'
+    import api from '@/api/api'
+
+    wepy.page({
+      data: {
+        goodsId: 0,
+        detail: {},
+        hidden: true,
+        animotionData: '',
+        orderType: 1, // 1 加购物车 2 立即购买
+        orderNum: 1,
+        isFavorite: false,
+        isValidData: true,
+        canOrder: true,
+        purchaseText: '立即购买',
+        commentList: [
+          {
+            url: '/static/images/icon_nav_01_new.png',
+            name: '手动阀',
+            time: '2020-09-15 22:25',
+            content: '是否受到了开放的空间放声大哭九十点附近',
+            start: 4.5,
+            children: [
+              {content: '看见立刻集散地立刻觉得愧疚色哦i均为绕迥为'}
+            ]
+          }
+        ]
+      }
+    })
+</script>
+
+<config>
+    {
+        navigationBarTitleText: '商品详情',
+        usingComponents: {
+            bottomLoadMore: '~@/components/bottom-load-more',
+            placeholder: '~@/components/placeholder'
+        }
+    }
+</config>

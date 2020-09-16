@@ -9,13 +9,13 @@
     }
 
     .his-item {
-        margin-top: 20rpx;
         display: flex;
+        flex-wrap: wrap;
+        margin-top: 20rpx;
         align-items: center;
         margin-left: -20rpx;
-
         .child {
-            background: #dedede;
+            background: #eeeeee;
             padding: 10rpx 20rpx;
             border-radius: 300rpx;
             margin-left: 20rpx;
@@ -23,7 +23,6 @@
             margin-top: 5rpx;
             color: #000;
         }
-
     }
 
     .btn-box {
@@ -46,21 +45,21 @@
 <template>
     <view class="container">
         <!-- 搜索栏 -->
-        <search @searchValue.user="doSearch"></search>
+        <search @searchValue.user="doSearch" :searchInputValue.sync="keyword"></search>
         <filterBar wx:if="{{list.length > 0 || skuval !== ''}}" @currentType.user="currentType"></filterBar>
         <view wx:if="{{list.length>0}}">
             <!-- 商品列表模块 -->
             <shopGridList :purchasetype.sync="purchasetype" :list.sync="list"></shopGridList>
         </view>
         <view wx:else class="history {{show?'':'hidden'}}">
-            <view class="doc">历史记录</view>
+            <view class="doc">历史搜索</view>
             <view class="his-item">
                 <view wx:for="{{hisKeywordList}}" wx:key="item" @tap.stop="selHisKeyword" data-id="{{item.id}}">
                     <view class="child {{item.sel == '1' ? 'active' : ''}}">{{item.keyword}}</view>
                 </view>
             </view>
             <view class="btn-box">
-                <view class="button type-empty" @tap.stop="clearHis">清除历史记录</view>
+                <button class="button type-empty" @tap.stop="clearHis">清除历史记录</button>
             </view>
         </view>
         <view>
@@ -98,9 +97,9 @@
         // this.$invoke('search', 'show', '0')
         this.show = false
         this.doSearchGoods(this.cateCode)
-        this.title = '' + option.title
-        this.setTitle('' + option.title)
-        console.log('onLoad - cateCode')
+        this.title = option.title || ''
+        this.setTitle(this.title)
+        console.log('onLoad - cateCode', option)
       } else {
         // this.$invoke('search', 'show', '1')
         this.show = true

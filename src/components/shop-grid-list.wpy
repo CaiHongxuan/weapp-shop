@@ -65,7 +65,7 @@
 <template>
     <scroll-view scroll-y="true" class="swiper-item-box">
         <view class="shop-item">
-            <navigator class="list" wx:for="{{list}}" wx:key="item" url="">
+            <navigator class="list" wx:for="{{list}}" wx:key="item" url="/pages/goods-detail">
                 <view class="image-box">
                     <image src="{{item.thumLogo}}"></image>
                 </view>

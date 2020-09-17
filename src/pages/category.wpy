@@ -2,13 +2,13 @@
     page {
         overflow-y: hidden;
     }
-    .search_read_only .search_content {
+    .search-read-only .search-content {
         width: 100%;
     }
     .category {
         display: flex;
         position: relative;
-        .left_category {
+        .left-category {
             width: 200rpx;
             position: relative;
             z-index: 1;
@@ -28,31 +28,31 @@
                 color: #ff6a3c;
             }
         }
-        .category_detail {
+        .category-detail {
             position: relative;
             z-index: 999;
             background: #fff;
             padding: 15px 10px 10px 20px;
             .children {
-                .child_second_name {
+                .child-second-name {
                     font-weight: bold;
                     margin: 15rpx 0rpx;
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
                 }
-                .third_children {
+                .third-children {
                     display: flex;
                     flex-wrap: wrap;
-                    .children_item {
+                    .children-item {
                         height: 200rpx;
                         width: 170rpx;
                         text-align: center;
-                        .child_image {
+                        .child-image {
                             width: 120rpx;
                             height: 120rpx;
                         }
-                        .child_name {
+                        .child-name {
                             font-size: 26rpx;
                             color: #666;
                             white-space: nowrap;
@@ -68,27 +68,27 @@
 </style>
 
 <template>
-    <view class="top_search">
-        <view class="search_read_only">
-            <navigator class="search_content" url="/pages/search">
+    <view class="top-search">
+        <view class="search-read-only">
+            <navigator class="search-content" url="/pages/search">
                 <i class="iconfont icon-search"></i>
-                <view class="search_input">搜索商品</view>
+                <view class="search-input">搜索商品</view>
             </navigator>
         </view>
     </view>
     <view class="category" style="height: {{ windowHeight-120}}px">
-        <scroll-view class="left_category" scroll-y="true" scroll-with-animation="true" style="height: {{windowHeight-105}}px">
+        <scroll-view class="left-category" scroll-y="true" scroll-with-animation="true" style="height: {{windowHeight-105}}px">
             <view class="name {{item.active ? 'active' : ''}}" wx:for="{{rootCateList}}" wx:key="item" @tap="changeCate" data-code="{{item.code}}">
                 {{item.name}}
             </view>
         </scroll-view>
-        <scroll-view class="category_detail" scroll-y="true" scroll-with-animation="true" style="height: {{windowHeight-120}}px">
+        <scroll-view class="category-detail" scroll-y="true" scroll-with-animation="true" style="height: {{windowHeight-120}}px">
             <view class="children" wx:for="{{childCateList}}" wx:for-item="item" wx:key="index">
-                <view class="child_second_name" data-code="{{item.code}}">{{item.name}}</view>
-                <view class="third_children">
-                    <navigator hover-class="none" class="children_item" wx:for="{{item.thirdCategory}}" wx:for-item="thirdCategory" wx:key="thirdIndex" url="/pages/search?cateCode={{thirdCategory.code}}">
-                        <image class="child_image" src="{{thirdCategory.thumLogo}}"></image>
-                        <view class="child_name" data-code="{{thirdCategory.code}}">{{thirdCategory.name}}</view>
+                <view class="child-second-name" data-code="{{item.code}}">{{item.name}}</view>
+                <view class="third-children">
+                    <navigator hover-class="none" class="children-item" wx:for="{{item.thirdCategory}}" wx:for-item="thirdCategory" wx:key="thirdIndex" url="/pages/search?cateCode={{thirdCategory.code}}">
+                        <image class="child-image" src="{{thirdCategory.thumLogo}}"></image>
+                        <view class="child-name" data-code="{{thirdCategory.code}}">{{thirdCategory.name}}</view>
                     </navigator>
                 </view>
             </view>

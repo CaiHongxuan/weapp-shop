@@ -25,7 +25,11 @@
 		},
 		"useIsolateContext": true,
 		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"useMultiFrameRuntime": true,
+		"useApiHook": true,
+		"packNpmManually": false,
+		"packNpmRelationList": []
 	},
 	"compileType": "miniprogram",
 	"appid": "wxe445e76b27bdefb1",

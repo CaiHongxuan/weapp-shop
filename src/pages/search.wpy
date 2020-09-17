@@ -46,7 +46,7 @@
     <view class="container">
         <!-- 搜索栏 -->
         <search @searchValue.user="doSearch" :searchInputValue.sync="keyword"></search>
-        <filterBar wx:if="{{list.length > 0 || skuval !== ''}}" @currentType.user="currentType"></filterBar>
+        <filterBar wx:if="{{list.length > 0 || skuval !== '' || showLoading}}" @currentType.user="currentType"></filterBar>
         <view wx:if="{{list.length>0}}">
             <!-- 商品列表模块 -->
             <shopGridList :purchasetype.sync="purchasetype" :list.sync="list"></shopGridList>
@@ -164,7 +164,7 @@
       currentType(obj) {
         let name = obj.name
         let type = obj.type
-        if (name === 'zhonghe') {
+        if (name === 'zonghe') {
           this.sort = -1
         } else if (name === 'sale') {
           this.sort = 3

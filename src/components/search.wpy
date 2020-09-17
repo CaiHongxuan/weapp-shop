@@ -69,8 +69,7 @@
         searchInputValue: ''
       },
       data: {
-        show: 1,
-        searchInputValue: ''
+        show: 1
       },
       methods: {
         searchInput(e) {

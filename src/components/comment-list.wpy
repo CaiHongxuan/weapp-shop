@@ -84,3 +84,11 @@
       }
     })
 </script>
+
+<config>
+    {
+        usingComponents: {
+            rate: '~@/components/rate',
+        }
+    }
+</config>

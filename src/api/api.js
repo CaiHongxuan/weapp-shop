@@ -39,9 +39,17 @@ const getHisKeywordList = (params) => wxRequest(params, apiBaseUrl + '/his-keywo
 // 获取商品列表
 const goodsList = (params) => wxRequest(params, apiBaseUrl + '/goods-list')
 
+// 获取商品详情
+const goodsDetail = (params) => wxRequest(params, apiBaseUrl + '/goods-detail')
+
+// 加入购物车
+const addCart = (params) => wxRequest(params, apiBaseUrl + '/add-cart')
+
 export default {
   rootCategoryList,
   childrenCategoryList,
   getHisKeywordList,
-  goodsList
+  goodsList,
+  goodsDetail,
+  addCart
 }

@@ -1,0 +1,62 @@
+<style lang="less">
+    .block {
+        padding: 27rpx 0;
+        background: #ffffff;
+        .block-title{
+            color: #000000;
+            height: 30rpx;
+            line-height: 30rpx;
+            border-left: 6px solid #f73c3c;
+            padding-left: 20rpx;
+        }
+        .block-content{
+            padding: 38rpx 22rpx;
+        }
+    }
+</style>
+
+<template>
+    <view class="block">
+        <view class="block-title">全部评价(999+)</view>
+        <view class="block-content">
+            <commentList :list.sync="commentList"></commentList>
+        </view>
+    </view>
+</template>
+
+<script>
+    import wepy from '@wepy/core'
+
+    wepy.page({
+      data: {
+        commentList: [{
+          url: '/static/images/icon_nav_01_new.png',
+          name: '手动阀',
+          time: '2020-09-15 22:25',
+          content: '是否受到了开放的空间放声大哭九十点附近',
+          star: 4.5,
+          children: [
+            {content: '看见立刻集散地立刻觉得愧疚色哦i均为绕迥为'}
+          ]
+        }, {
+          url: '/static/images/icon_nav_02_new.png',
+          name: '给对方嘎',
+          time: '2020-09-16 23:45',
+          content: '模块的方式来看人看了巨额利润开始了是法国岁的法国',
+          star: 5,
+          children: [
+            {content: '的风格和大风好地方风格化的副官回答的更好的风格和'}
+          ]
+        }]
+      }
+    })
+</script>
+
+<config>
+    {
+        navigationBarTitleText: '商品评论',
+        usingComponents: {
+            commentList: '~@/components/comment-list'
+        }
+    }
+</config>

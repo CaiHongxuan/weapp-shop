@@ -51,310 +51,312 @@
                 margin-top: 20rpx;
             }
         }
-        .order-num {
-            background: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 108rpx;
-            border-top: 1px solid #efefef;
-            border-bottom: 1px solid #efefef;
-            padding: 0 30rpx;
+    }
+
+    .order-num {
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 108rpx;
+        border-top: 1px solid #efefef;
+        border-bottom: 1px solid #efefef;
+        padding: 0 30rpx;
+        .doc {
+            color: #808080;
+            .num {
+                color: #f73c3c;
+            }
+        }
+    }
+
+    .block {
+        padding: 27rpx 0rpx;
+        background: #fff;
+        .block-title {
+            color: #000;
+            height: 30rpx;
+            line-height: 30rpx;
+            border-left: 6px solid #f73c3c;
+            padding-left: 20rpx;
+        }
+        .block-content {
+            padding: 38rpx 22rpx;
+            .process {
+                font-size: 20rpx;
+                margin: 0 auto;
+                border: 1px solid #999999;
+                padding: 10rpx;
+                border-radius: 200px;
+                text-align: center;
+                margin-bottom: 25rpx;
+                color: #808080;
+            }
             .doc {
                 color: #808080;
-                .num {
-                    color: #f73c3c;
-                }
-            }
-        }
-        .block {
-            padding: 27rpx 0rpx;
-            background: #fff;
-            .block-title {
-                color: #000;
-                height: 30rpx;
+                font-size: 26rpx;
                 line-height: 30rpx;
-                border-left: 6px solid #f73c3c;
-                padding-left: 20rpx;
-            }
-            .block-content {
-                padding: 38rpx 22rpx;
-                .process {
-                    font-size: 20rpx;
-                    margin: 0 auto;
-                    border: 1px solid #999999;
-                    padding: 10rpx;
-                    border-radius: 200px;
-                    text-align: center;
-                    margin-bottom: 25rpx;
-                    color: #808080;
-                }
-                .doc {
-                    color: #808080;
-                    font-size: 26rpx;
-                    line-height: 30rpx;
-                }
-            }
-            .table {
-                margin: 0 auto;
-                margin-top: -24rpx;
-                .th {
-                    display: flex;
-                    justify-content: space-between;
-                    margin-top: 24rpx;
-                }
-                .tr {
-                    font-size: 26rpx;
-                    color: #808080;
-                    text-align: left;
-                    flex: 1;
-                }
             }
         }
-
-        .detail-bottom {
-            width: 100%;
-            border-top: 1px solid #ededed;
-            position: fixed;
-            bottom: 0;
-            background: #fff;
-            z-index: 1001;
-            .bottom-box {
+        .table {
+            margin: 0 auto;
+            margin-top: -24rpx;
+            .th {
                 display: flex;
-                align-items: center;
-                justify-content: flex-end;
-                position: relative;
-                .contact {
-                    width: 100rpx;
-                    height: 80rpx;
-                    margin: 0 auto;
-                    position: absolute;
-                    text-align: center;
-                    line-height: 80rpx;
-                    left: 100rpx; // 在客服上面
-                    opacity: 0;
-                }
+                justify-content: space-between;
+                margin-top: 24rpx;
             }
-            .sy-bottom {
-                padding: 15rpx 40rpx;
-                height: 60rpx;
-                line-height: 60rpx;
-                font-size: 30rpx;
-            }
-            .btn-order {
-                background: #ff4856;
-                color: #fff;
-            }
-            .btn-cart {
-                color: #fff;
-                background: #ff6e30;
-            }
-            .order-color {
-                background: #A9A9A9;
-                color: #fff;
-            }
-            .cart-color {
-                color: #fff;
-                background: #A9A9A9;
-            }
-            .item:first-child {
-                border-right: 1px solid #efefef;
-            }
-            .item {
+            .tr {
+                font-size: 26rpx;
+                color: #808080;
+                text-align: left;
                 flex: 1;
-                text-align: center;
-                .doc {
-                    font-size: 24rpx;
-                }
-            }
-            .selec-active {
-                .doc {
-                    color: #ff4856;
-                }
-                .iconfont {
-                    color: #ff4856;
-                }
             }
         }
+    }
 
-        .over-model {
-            position: fixed;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            width: 100%;
-            height: 100%;
-            top: 0;
-        }
-
-        .head-box {
+    .detail-bottom {
+        width: 100%;
+        border-top: 1px solid #ededed;
+        position: fixed;
+        bottom: 0;
+        background: #fff;
+        z-index: 1001;
+        .bottom-box {
             display: flex;
             align-items: center;
-            border-bottom: 1px solid #efefef;
-            padding-bottom: 26rpx;
-            .img-wrap {
-                height: 200rpx;
-                width: 200rpx;
-                background: #000;
-            }
-            .goods-img {
-                height: 200rpx;
-                width: 200rpx;
-                background: #000;
-            }
-            .product-wrap {
-                padding: 20rpx;
-            }
-            .product-name {
-                color: #666;
-            }
-            .price {
-                color: #e11500;
-                font-size: 36rpx;
-                padding-top: 32rpx;
-            }
-        }
-
-        .rule-box {
-            border-bottom: 1px solid #efefef;
-            padding-bottom: 26rpx;
-            .title {
-                color: #4c4c4c;
-                font-size: 32rpx;
-                margin-top: 10rpx;
-            }
-            .items {
-                display: flex;
-                flex-wrap: wrap;
-                margin-top: 5rpx;
-                margin-left: -20rpx;
-            }
-            .item {
-                padding: 15rpx 28rpx;
-                background: #e6e6e6;
-                color: #000;
-                margin-left: 20rpx;
-                margin-top: 10rpx;
-                border-radius: 10rpx;
-            }
-            .active {
-                background: #ed394a;
-                color: #fff;
-            }
-        }
-
-        .num-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15rpx 0rpx;
-            .title {
-                color: #4c4c4c;
-                font-size: 32rpx;
-            }
-        }
-
-        .buy-num {
-            width: 170rpx;
-            height: 48rpx;
-            line-height: 48rpx;
-            display: flex;
-            font-size: 24rpx;
-            text-align: center;
-            .jian-btn {
-                width: 48rpx;
-                height: 100%;
-                border-left: 1rpx solid #ccc;
-                border-bottom: 1rpx solid #ccc;
-                border-top: 1rpx solid #ccc;
-                border-bottom-left-radius: 6rpx;
-                border-top-left-radius: 6rpx;
-            }
-            .jian-btn.disabled {
-                background-color: #f5f5f9;
-                border-left: 1rpx solid #eee;
-                border-bottom: 1rpx solid #eee;
-                border-top: 1rpx solid #eee;
-                color: #ccc;
-            }
-            .jia-btn {
-                width: 48rpx;
-                height: 100%;
-                border-right: 1rpx solid #ccc;
-                border-bottom: 1rpx solid #ccc;
-                border-top: 1rpx solid #ccc;
-                border-bottom-right-radius: 6rpx;
-                border-top-right-radius: 6rpx;
-            }
-            .jia-btn.disabled {
-                background-color: #f5f5f9;
-                border-right: 1rpx solid #eee;
-                border-bottom: 1rpx solid #eee;
-                border-top: 1rpx solid #eee;
-                color: #ccc;
-            }
-            input {
-                width: 68rpx;
-                height: 48rpx;
-                min-height: 48rpx;
-                text-align: center;
-                font-size: 24rpx;
-                border: 1rpx solid #ccc;
-            }
-        }
-
-        .panel-model {
-            position: absolute;
-            height: 0rpx;
-            width: 100%;
-            z-index: 1002;
-            background: #fff;
-            bottom: 0;
-        }
-
-        .model-content {
-            padding: 20rpx;
+            justify-content: flex-end;
             position: relative;
-        }
-
-        .close-model {
-            position: absolute;
-            right: 10rpx;
-            top: 10rpx;
-            .icon-close {
-                color: #e11500;
-                font-size: 32rpx;
+            .contact {
+                width: 100rpx;
+                height: 80rpx;
+                margin: 0 auto;
+                position: absolute;
+                text-align: center;
+                line-height: 80rpx;
+                left: 100rpx; // 在客服上面
+                opacity: 0;
             }
         }
-
-        .confirm-btn {
-            height: 100rpx;
-            line-height: 100rpx;
-            width: 100%;
-            background: #ff6e30;
-            text-align: center;
+        .sy-bottom {
+            padding: 15rpx 40rpx;
+            height: 60rpx;
+            line-height: 60rpx;
+            font-size: 30rpx;
+        }
+        .btn-order {
+            background: #ff4856;
             color: #fff;
-            position: absolute;
-            bottom: 0;
-            z-index: 10003;
         }
-
-        .button-more-comment {
-            font-size: 28rpx;
-            height: 55rpx;
-            line-height: 55rpx;
+        .btn-cart {
+            color: #fff;
+            background: #ff6e30;
+        }
+        .order-color {
+            background: #A9A9A9;
+            color: #fff;
+        }
+        .cart-color {
+            color: #fff;
+            background: #A9A9A9;
+        }
+        .item:first-child {
+            border-right: 1px solid #efefef;
+        }
+        .item {
+            flex: 1;
             text-align: center;
-            margin: 20rpx auto;
-            width: 200rpx;
-            -moz-border-radius: 10rpx;
-            /* Firefox */
-            -webkit-border-radius: 10rpx;
-            /* Safari 和 Chrome */
-            border-radius: 10rpx;
-            /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
-            color: #ff4856;
-            border: 1px solid #ff4856;
+            .doc {
+                font-size: 24rpx;
+            }
         }
+        .select-active {
+            .doc {
+                color: #ff4856;
+            }
+            .iconfont {
+                color: #ff4856;
+            }
+        }
+    }
+
+    .over-model {
+        position: fixed;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        width: 100%;
+        height: 100%;
+        top: 0;
+    }
+
+    .head-box {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #efefef;
+        padding-bottom: 26rpx;
+        .img-wrap {
+            height: 200rpx;
+            width: 200rpx;
+            background: #000;
+        }
+        .goods-img {
+            height: 200rpx;
+            width: 200rpx;
+            background: #000;
+        }
+        .product-wrap {
+            padding: 20rpx;
+        }
+        .product-name {
+            color: #666;
+        }
+        .price {
+            color: #e11500;
+            font-size: 36rpx;
+            padding-top: 32rpx;
+        }
+    }
+
+    .rule-box {
+        border-bottom: 1px solid #efefef;
+        padding-bottom: 26rpx;
+        .title {
+            color: #4c4c4c;
+            font-size: 32rpx;
+            margin-top: 10rpx;
+        }
+        .items {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 5rpx;
+            margin-left: -20rpx;
+        }
+        .item {
+            padding: 15rpx 28rpx;
+            background: #e6e6e6;
+            color: #000;
+            margin-left: 20rpx;
+            margin-top: 10rpx;
+            border-radius: 10rpx;
+        }
+        .active {
+            background: #ed394a;
+            color: #fff;
+        }
+    }
+
+    .num-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15rpx 0rpx;
+        .title {
+            color: #4c4c4c;
+            font-size: 32rpx;
+        }
+    }
+
+    .buy-num {
+        width: 170rpx;
+        height: 48rpx;
+        line-height: 48rpx;
+        display: flex;
+        font-size: 24rpx;
+        text-align: center;
+        .jian-btn {
+            width: 48rpx;
+            height: 100%;
+            border-left: 1rpx solid #ccc;
+            border-bottom: 1rpx solid #ccc;
+            border-top: 1rpx solid #ccc;
+            border-bottom-left-radius: 6rpx;
+            border-top-left-radius: 6rpx;
+        }
+        .jian-btn.disabled {
+            background-color: #f5f5f9;
+            border-left: 1rpx solid #eee;
+            border-bottom: 1rpx solid #eee;
+            border-top: 1rpx solid #eee;
+            color: #ccc;
+        }
+        .jia-btn {
+            width: 48rpx;
+            height: 100%;
+            border-right: 1rpx solid #ccc;
+            border-bottom: 1rpx solid #ccc;
+            border-top: 1rpx solid #ccc;
+            border-bottom-right-radius: 6rpx;
+            border-top-right-radius: 6rpx;
+        }
+        .jia-btn.disabled {
+            background-color: #f5f5f9;
+            border-right: 1rpx solid #eee;
+            border-bottom: 1rpx solid #eee;
+            border-top: 1rpx solid #eee;
+            color: #ccc;
+        }
+        input {
+            width: 68rpx;
+            height: 48rpx;
+            min-height: 48rpx;
+            text-align: center;
+            font-size: 24rpx;
+            border: 1rpx solid #ccc;
+        }
+    }
+
+    .panel-model {
+        position: fixed;
+        height: 0rpx;
+        width: 100%;
+        z-index: 1002;
+        background: #fff;
+        bottom: 0;
+    }
+
+    .model-content {
+        padding: 20rpx;
+        position: relative;
+    }
+
+    .close-model {
+        position: absolute;
+        right: 10rpx;
+        top: 10rpx;
+        .icon-close {
+            color: #e11500;
+            font-size: 32rpx;
+        }
+    }
+
+    .confirm-btn {
+        height: 100rpx;
+        line-height: 100rpx;
+        width: 100%;
+        background: #ff6e30;
+        text-align: center;
+        color: #fff;
+        position: absolute;
+        bottom: 0;
+        z-index: 10003;
+    }
+
+    .button-more-comment {
+        font-size: 28rpx;
+        height: 55rpx;
+        line-height: 55rpx;
+        text-align: center;
+        margin: 20rpx auto;
+        width: 200rpx;
+        -moz-border-radius: 10rpx;
+        /* Firefox */
+        -webkit-border-radius: 10rpx;
+        /* Safari 和 Chrome */
+        border-radius: 10rpx;
+        /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+        color: #ff4856;
+        border: 1px solid #ff4856;
     }
 </style>
 
@@ -421,13 +423,65 @@
         <view class="big-images">
             <view class="doc">
                 <view class="wxParse-p">
-                    <template is="wxParse" data="{{wxParseData:detailInfo.nodes}}"></template>
+                    <!--<template is="wxParse" data="{{wxParseData:detailInfo.nodes}}"></template>-->
                 </view>
             </view>
         </view>
-        <view class="detail-bottom"></view>
-        <view class="over-mode"></view>
-        <view class="panel-model"></view>
+        <view class="detail-bottom">
+            <view class="bottom-box">
+                <view class="item" @tap="homePage">
+                    <i class="iconfont icon-home"></i>
+                    <view class="doc">首页</view>
+                </view>
+                <contact-button class="contact"></contact-button>
+                <view class="item">
+                    <i class="iconfont icon-message"></i>
+                    <view class="doc">客服</view>
+                </view>
+                <contact-button class="contact"></contact-button>
+                <view class="item {{isFavorite ? 'select-active' : ''}}" @tap="takeFavorite">
+                    <i class="iconfont icon-collection"></i>
+                    <view class="doc">收藏</view>
+                </view>
+                <view class="sy-bottom {{canOrder ? 'btn-cart' : 'cart-color'}}" @tap="takeCart">加入购物车</view>
+                <view class="sy-bottom {{canOrder ? 'btn-order' : 'order-color'}}" @tap="takeOrder">{{purchaseText}}</view>
+            </view>
+        </view>
+        <view class="over-mode {{hidden ? 'hidden' : ''}}"></view>
+        <view class="panel-model {{hidden ? 'hidden' : ''}}" animation="{{animationData}}">
+            <view class="model-content">
+                <view class="head-box">
+                    <view class="img-wrap">
+                        <image class="goods-img" src="{{detail.logo}}"></image>
+                    </view>
+                    <view class="product-wrap">
+                        <view class="product-name">{{detail.name}}</view>
+                        <view class="price">¥{{detail.price}}</view>
+                    </view>
+                </view>
+                <scroll-view scroll-y="true" style="height:400rpx">
+                    <view class="rule-box" wx:for="{{detail.goodsSkuNameList}}" wx:for-item="item" wx:key="key" wx:for-index="ex">
+                        <view class="title">{{item.skuName}}</view>
+                        <view class="items">
+                            <view class="item {{childitem.current ? 'active' : ''}}" wx:for="{{item.skuValList}}" wx:for-item="childitem" wx:key="childkey" @tap.stop="selAttr" data-id="{{childitem.skuValId}}" data-nameid="{{item.skuNameId}}" data-index="{{ex}}">{{childitem.skuVal}}</view>
+                        </view>
+                    </view>
+                    <view class="num-box">
+                        <view class="title">数量</view>
+                        <view class="stock">库存：{{detail.stockNum}}件</view>
+                        <view class="buy-num">
+                            <view class="jian-btn {{item.number==1 ? 'disabled' : ''}}" catchtap="jianBtnTap" data-index="{{index}}">-</view>
+                            <input type="number" bindinput="bindOrderNumInput" value="{{orderNum}}" />
+                            <view class="jia-btn {{item.number==10 ? 'disabled' : ''}}" catchtap="jiaBtnTap" data-index="{{index}}">+</view>
+                        </view>
+                    </view>
+                </scroll-view>
+                <view class="close-model" @tap="closeModel">
+                    <i class="iconfont icon-close"></i>
+                </view>
+            </view>
+            <view class="confirm-btn" @tap.stop="confirmTake">确定</view>
+        </view>
     </view>
 </template>
 
@@ -437,10 +491,14 @@
 
     wepy.page({
       data: {
+        winWidth: 0,
+        winHeight: '100%',
         goodsId: 0,
         detail: {},
+        goodsSkuValIds: [],
+        goodBigImg: [],
         hidden: true,
-        animotionData: '',
+        animationData: '',
         orderType: 1, // 1 加购物车 2 立即购买
         orderNum: 1,
         isFavorite: false,
@@ -453,12 +511,180 @@
             name: '手动阀',
             time: '2020-09-15 22:25',
             content: '是否受到了开放的空间放声大哭九十点附近',
-            start: 4.5,
+            star: 4.5,
             children: [
               {content: '看见立刻集散地立刻觉得愧疚色哦i均为绕迥为'}
             ]
           }
         ]
+      },
+      onLoad(option) {
+        this.goodsId = option.id
+        this.getGoodsDetail()
+      },
+      onShow() {
+        let animation = wx.createAnimation({
+          transformOrigin: '50% 50%',
+          duration: 200,
+          timingFunction: 'linear',
+          delay: 0
+        })
+        this.animation = animation
+      },
+      methods: {
+        previewImage(e) {
+          let current = e.target.dataset.src
+          let imageArr = []
+          let obj = this.detail.photoList
+          Object.keys(obj).forEach((item) => {
+            imageArr.push(obj[item].photo)
+          })
+          wx.previewImage({
+            current: current,
+            urls: imageArr
+          })
+        },
+        async getGoodsDetail() {
+          const json = await api.goodsDetail({
+            query: {
+              'goods_id': this.goodsId
+            }
+          })
+          if (json.detail instanceof Object) {
+            this.detail = json.detail
+          }
+          console.log('goods-detail --- ', json)
+        },
+        // 加入购物车
+        async doTakeCart() {
+          let userSpecialInfo = wx.getStorageSync('userSpecialInfo') || {}
+          let openId = userSpecialInfo.openid
+          const json = await api.addCart({
+            query: {
+              openId: openId,
+              goodsId: this.goodsId,
+              num: this.orderNum
+            }
+          })
+          this.hidden = true
+          console.log('doTakeCart --- ', json)
+        },
+        // 立即购买
+        async doTakeOrder() {
+          let userSpecialInfo = wx.getStorageSync('userSpecialInfo') || {}
+          let openId = userSpecialInfo.openid
+          const json = await api.addCart({
+            query: {
+              openId: openId,
+              goodsId: this.goodsId,
+              num: this.orderNum
+            }
+          })
+          this.hidden = true
+          console.log('doTakeOrder --- ', json)
+          wx.navigateTo({
+            url: '/pages/confirm_order?goodsId=' + this.goodsId
+          })
+        },
+        async showConfirmData() {
+          this.animation.height('783rpx').step()
+          // this.setData({
+          //   animationData: this.animation.export()
+          // })
+          this.animationData = this.animation.export()
+          setTimeout(() => {
+            this.hidden = false
+            let systemInfo = wx.getStorageSync('systemInfo')
+            this.winHeight = systemInfo.windowHeight
+          }, 100)
+        },
+        homePage() {
+          wx.switchTab({
+            url: '/pages/index'
+          })
+        },
+        moreComment() {
+          wx.navigateTo({
+            url: '/pages/comment'
+          })
+        },
+        takeFavorite() {
+          // todo
+        },
+        takeCart() {
+          if (!this.canOrder) {
+            return
+          }
+          this.showConfirmData()
+          this.orderType = 1
+        },
+        takeOrder() {
+          if (!this.canOrder) {
+            return
+          }
+          this.showConfirmData()
+          this.orderType = 2
+        },
+        selAttr(e) {
+          let id = e.currentTarget.dataset.id
+          let nameid = e.currentTarget.dataset.nameid
+          let index = e.currentTarget.dataset.index
+          for (let i = 0; i < this.detail.goodsSkuNameList.length; i++) {
+            let skuValList = this.detail.goodsSkuNameList[i].skuValList
+            for (let j = 0; j < skuValList.length; j++) {
+              let skuVal = skuValList[j]
+              console.log('skuVal -- ', skuVal, id, nameid, index)
+              if (this.detail.goodsSkuNameList[i].skuNameId === nameid) {
+                skuVal.current = false
+                if (skuVal.skuValId === id) {
+                  skuVal.current = true
+                  this.goodsSkuValIds[index] = id
+                  console.log('goodsSkuValIds -- ', this.goodsSkuValIds)
+                  for (let k = 0; k < this.detail.goodsSkuList.length; k++) {
+                    let skuValIds = JSON.stringify(this.detail.goodsSkuList[k].skuValIds)
+                    console.log('skuVal -- goodsSkuList -- ', skuValIds, JSON.stringify(this.goodsSkuValIds), JSON.stringify(this.goodsSkuValIds) === skuValIds)
+                    if (JSON.stringify(this.goodsSkuValIds) === skuValIds) {
+                      this.detail.stockNum = this.detail.goodsSkuList[k].stockNum
+                      this.detail.price = this.detail.goodsSkuList[k].price
+                      break
+                    }
+                  }
+                }
+              }
+            }
+          }
+          console.log('selAttr --- ', e)
+        },
+        jianBtnTap() {
+          if (this.orderNum > 1) {
+            this.orderNum--
+          }
+        },
+        bindOrderNumInput(e) {
+          this.orderNum = e.$wx.detail.value
+          console.log('bindOrderNumInput --- ', this.orderNum)
+        },
+        jiaBtnTap() {
+          this.orderNum++
+        },
+        closeModel() {
+          this.winHeight = '100%'
+          this.animation.height(0).step()
+          this.setData({
+            animationData: this.animation.export()
+          })
+          setTimeout(() => {
+            this.hidden = true
+          }, 100)
+          console.log('closeModel --- ', this.animationData)
+        },
+        confirmTake() {
+          if (this.orderType === 1) {
+            this.doTakeCart()
+          } else if (this.orderType === 2) {
+            this.doTakeOrder()
+          }
+        }
       }
     })
 </script>
@@ -467,8 +693,7 @@
     {
         navigationBarTitleText: '商品详情',
         usingComponents: {
-            bottomLoadMore: '~@/components/bottom-load-more',
-            placeholder: '~@/components/placeholder'
+            commentList: '~@/components/comment-list'
         }
     }
 </config>

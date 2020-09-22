@@ -65,7 +65,8 @@
         'pages/category',
         'pages/index',
         'pages/search',
-        'pages/goods-detail'
+        'pages/goods-detail',
+        'pages/comment'
     ],
     window: {
         backgroundTextStyle: 'light',

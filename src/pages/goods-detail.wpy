@@ -589,10 +589,8 @@
           })
         },
         async showConfirmData() {
-          this.animation.height('768rpx').step()
-          // this.setData({
-          //   animationData: this.animation.export()
-          // })
+          // this.animation.height('768rpx').step()
+          this.animation.step()
           this.animationData = this.animation.export()
           setTimeout(() => {
             this.hidden = false
@@ -671,10 +669,8 @@
         },
         closeModel() {
           this.winHeight = '100%'
-          this.animation.height(0).step()
-          // this.setData({
-          //   animationData: this.animation.export()
-          // })
+          // this.animation.height(0).step()
+          this.animation.step()
           this.animationData = this.animation.export()
           setTimeout(() => {
             this.hidden = true

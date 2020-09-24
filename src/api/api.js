@@ -45,11 +45,27 @@ const goodsDetail = (params) => wxRequest(params, apiBaseUrl + '/goods-detail')
 // 加入购物车
 const addCart = (params) => wxRequest(params, apiBaseUrl + '/add-cart')
 
+// 购物车商品列表
+const cartList = (params) => wxRequest(params, apiBaseUrl + '/cart-list')
+
+// 切换勾选购物车全部商品
+const cartCheckAll = (params) => wxRequest(params, apiBaseUrl + '/cart-check-all')
+
+// 更新购物车（切换勾选购物车某个商品、调整商品数量）
+const updateCart = (params) => wxRequest(params, apiBaseUrl + '/update-cart')
+
+// 删除购物车
+const delCart = (params) => wxRequest(params, apiBaseUrl + '/del-cart')
+
 export default {
   rootCategoryList,
   childrenCategoryList,
   getHisKeywordList,
   goodsList,
   goodsDetail,
-  addCart
+  addCart,
+  cartList,
+  cartCheckAll,
+  updateCart,
+  delCart
 }

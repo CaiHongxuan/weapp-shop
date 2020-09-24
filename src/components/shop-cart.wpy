@@ -1,0 +1,494 @@
+<style lang="less">
+    .goods-list {
+        margin-bottom: 100rpx;
+    }
+    .goods-info {
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        padding: 40rpx 0 30rpx 0rpx;
+        box-sizing: border-box;
+        align-items: center;
+        position: relative;
+        .icon-check {
+            position: absolute;
+            margin-left: 25rpx;
+        }
+        .img-box {
+            width: 160rpx;
+            height: 160rpx;
+            overflow: hidden;
+            margin-right: 20rpx;
+            background-color: #d8d8d8;
+            margin-left: 90rpx;
+        }
+        .text-box {
+            width: 470rpx;
+            position: relative;
+        }
+        .text-box .goods-title {
+            font-size: 28rpx;
+            color: #000;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            padding: 0 20rpx 5rpx 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+        }
+        .text-box .lable {
+            font-size: 26rpx;
+            color: #999;
+            height: 38rpx;
+            line-height: 38rpx;
+            margin: 8rpx 0 20rpx 0;
+        }
+        .lable {
+            display: flex;
+            align-items: center;
+            .goods-label {
+                font-size: 26rpx;
+            }
+            .goods-lable {
+                font-size: 26rpx
+            }
+            .bo-label {
+                font-size: 24rpx;
+                background: #e64340;
+                padding: 2rpx 10rpx;
+                color:#fff;
+                border-radius: 2rpx;
+                margin-left: 10rpx;
+
+            }
+        }
+        .text-box .goods-price {
+            font-size: 26rpx;
+            color: #e64340;
+            height: 50rpx;
+            line-height: 50rpx;
+        }
+        .text-box .buy-num {
+            width: 164rpx;
+            height: 48rpx;
+            line-height: 48rpx;
+            position: absolute;
+            right: 30rpx;
+            bottom: 0;
+            display: flex;
+            /*justify-content: space-between;*/
+            font-size: 24rpx;
+            text-align: center
+        }
+        .text-box .buy-num .jian-btn {
+            width: 48rpx;
+            height: 100%;
+            border-left: 1rpx solid #ccc;
+            border-bottom: 1rpx solid #ccc;
+            border-top: 1rpx solid #ccc;
+            border-bottom-left-radius: 6rpx;
+            border-top-left-radius: 6rpx;
+        }
+        .text-box .buy-num .jian-btn.disabled {
+            background-color: #f5f5f9;
+            border-left: 1rpx solid #eee;
+            border-bottom: 1rpx solid #eee;
+            border-top: 1rpx solid #eee;
+            color: #ccc;
+        }
+        .text-box .buy-num .jia-btn {
+            width: 48rpx;
+            height: 100%;
+            border-right: 1rpx solid #ccc;
+            border-bottom: 1rpx solid #ccc;
+            border-top: 1rpx solid #ccc;
+            border-bottom-right-radius: 6rpx;
+            border-top-right-radius: 6rpx;
+        }
+        .text-box .buy-num .jia-btn.disabled {
+            background-color: #f5f5f9;
+            border-right: 1rpx solid #eee;
+            border-bottom: 1rpx solid #eee;
+            border-top: 1rpx solid #eee;
+            color: #ccc;
+        }
+        .text-box .buy-num input {
+            width: 68rpx;
+            height: 48rpx;
+            min-height: 48rpx;
+            text-align: center;
+            font-size: 24rpx;
+            border: 1rpx solid #ccc;
+        }
+        .img-box .img {
+            width: 160rpx;
+            height: 160rpx;
+        }
+    }
+    .jiesuan-box {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 100rpx;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        border-bottom: 1px solid #eee;
+        border-top: 1px solid #eee;
+        background-color: #fff;
+        z-index: 9999;
+    }
+    .jiesuan-box .to-pay-btn {
+        width: 240rpx;
+        text-align: center;
+        line-height: 100rpx;
+        background-color: #e64340;
+        font-size: 32rpx;
+        color: #ffffff;
+    }
+    .jiesuan-box .to-pay-btn.no-select {
+        background-color: #ccc;
+    }
+    .jiesuan-box .left-price {
+        display: flex;
+        width: 510rpx;
+        justify-content: space-between;
+        padding: 0 30rpx 0 20rpx;
+        font-size: 28rpx;
+        box-sizing: border-box;
+        align-items: center;
+    }
+    .jiesuan-box .total {
+        color: #e64340;
+    }
+    .list-box {
+        height: 236rpx;
+    }
+    .all-select-box {
+        width: 200rpx;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .all-select {
+        flex: 1;
+        padding-left: 10rpx;
+    }
+    .empty-cart {
+        margin-top: 200rpx;
+        .shop-btn {
+            display: flex;
+            width: 100%;
+        }
+        .block {
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            align-items: center;
+        }
+        .btn-group {
+            display: flex;
+            align-items: center;
+            padding-top: 120rpx;
+            .btn {
+                font-size: 30rpx;
+                padding: 22rpx 55rpx;
+                text-align: center;
+                margin: 0 auto;
+                width: 100%;
+                -moz-border-radius: 10rpx;
+                /* Firefox */
+                -webkit-border-radius: 10rpx;
+                /* Safari 和 Chrome */
+                border-radius: 10rpx;
+                /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+            }
+            .get-store {
+                background: #ed601b;
+                color: #fff;
+                margin-left: 1rpx;
+            }
+        }
+    }
+    .empty-cart-img {
+        width: 220rpx;
+        height: 177rpx;
+        display: block;
+        margin: 0 auto;
+    }
+    .empty-cart-text {
+        font-size: 32rpx;
+        color: #999;
+        margin-top: 20rpx;
+        text-align: center;
+    }
+</style>
+
+<template>
+    <view class="goods-list">
+        <view wx:for="{{list}}" wx:key="index" wx:for-item="item" class="list-box">
+            <swipeDelete :swipeData="item" @delItem.user="handleDelItem">
+                <view class="goods-info">
+                    <icon class="icon-check" type="{{item.isChecked ? 'success' : 'circle'}}" color="{{item.isChecked ? 'red' : 'rgb(153,153,153)'}}" @tap.stop="selectTap" data-index="{{index}}" data-id="{{item.id}}" size="20"></icon>
+                    <view class="img-box">
+                        <image class="img" src="{{item.thumLogo}}"></image>
+                    </view>
+                    <view class="text-box">
+                        <view class="goods-title">
+                            <navigator url="/pages/goods-detail?id={{item.id}}">{{item.title}}</navigator>
+                        </view>
+                        <view class="lable">
+                            <view class="goods-lable">{{item.goodsSkuValName}}</view>
+                            <view class="bo-label" wx:if="{{item.type==2}}">补货</view>
+                        </view>
+                        <view class="goods-price">¥{{item.price}}</view>
+                        <view class="buy-num">
+                            <view class="jian-btn {{item.num==1 ? 'disabled' : ''}}" catchtap="jianBtnTap" data-index="{{index}}" data-id="{{item.id}}">-</view>
+                            <input type="number" value="{{item.num}}" disabled />
+                            <view class="jia-btn" catchtap="jiaBtnTap" data-index="{{index}}" data-id="{{item.id}}">+</view>
+                        </view>
+                    </view>
+                </view>
+            </swipeDelete>
+        </view>
+    </view>
+    <view wx:if="{{list.length == 0}}" class="empty-cart">
+        <image class="empty-cart-img" src="/static/images/empty_cart.png"></image>
+        <view class="empty-cart-text">购物车还是空的</view>
+        <view class="shop-btn">
+            <view class="block btn-group">
+                <view class="btn get-store" @tap="goHome">去逛逛</view>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{list.length > 0}}" class="jiesuan-box">
+        <view class="left-price">
+            <view class="all-select-box" @tap.stop="selectAll">
+                <icon  type="{{allChecked ? 'success' : 'circle'}}" size="20" color="{{allChecked ? 'red' : 'rgb(153,153,153)'}}"></icon>
+                <view class="all-select">全选</view>
+            </view>
+            <view class="total" hidden="{{noSelect}}">合计：¥{{totalPrice}}</view>
+        </view>
+        <viwe class="to-pay-btn {{noSelect ? 'no-select' : ''}}" hidden="{{!saveHidden}}" bindtap="toPayOrder">去结算</viwe>
+    </view>
+</template>
+
+<script>
+    import wepy from '@wepy/core'
+    import api from '@/api/api'
+
+    wepy.component({
+      data: {
+        list: [],
+        allChecked: true,
+        noSelect: true,
+        saveHidden: true,
+        operating: false,
+        totalPrice: 0
+      },
+      onLoad() {
+        console.log('shop-cart:onLoad')
+        this.operating = false
+      },
+      methods: {
+        // 返回首页
+        goHome() {
+          wx.switchTab({
+            url: '/pages/index'
+          })
+        },
+        // 获取购物车商品列表
+        async getCartGoods() {
+          let userSpecialInfo = wx.getStorageSync('userSpecialInfo') || {}
+          let openId = userSpecialInfo.openid
+          const json = await api.cartList({
+            query: {
+              'openId': openId
+            }
+          })
+          this.totalPrice = 0
+          if (json.list instanceof Array) {
+            this.list = json.list
+            for (let i = 0; i < this.list.length; i++) {
+              if (!this.list[i].isChecked) {
+                this.allChecked = false
+              } else {
+                this.noSelect = false
+                this.totalPrice += parseInt(this.list[i].price * 100) * this.list[i].num
+              }
+            }
+          }
+          this.totalPrice /= 100
+          console.log('shop-cart:getCartGoods --- ')
+        },
+        // 切换勾选全部商品
+        async selectAll() {
+          let userSpecialInfo = wx.getStorageSync('userSpecialInfo') || {}
+          let openId = userSpecialInfo.openid
+          let check = 0
+          if (!this.allChecked) { // 未全选
+            check = 1
+          }
+          // 发起请求cartCheckAll
+          const json = await api.cartCheckAll({
+            query: {
+              openId: openId,
+              check: check
+            },
+            method: 'PUT'
+          })
+          if (json.result !== true) {
+            console.error('shop-cart:selectAll --- 全选同步购物车失败', json)
+            return
+          }
+
+          this.totalPrice = 0
+          for (let i = 0; i < this.list.length; i++) {
+            this.list[i].isChecked = !this.allChecked // 点击“全选”后，每个商品的勾选情况与当前的全选状态相反
+            if (!this.allChecked) {
+              this.totalPrice += parseInt(this.list[i].price * 100) * this.list[i].num
+            }
+          }
+          this.totalPrice /= 100
+          this.noSelect = this.allChecked // 点击“全选”后，此时的noSelect状态与当前的全选状态一致
+          this.allChecked = !this.allChecked // "全选”状态切换
+          console.log('shop-cart:selectAll --- ')
+        },
+        // 去结算
+        toPayOrder() {
+          // todo
+          console.log('shop-cart:toPyaOrder')
+        },
+        // 删除某个商品
+        handleDelItem() {
+          // todo
+          console.log('shop-cart:handleDelItem')
+        },
+        // 切换选择商品
+        async selectTap(e) {
+          let index = e.currentTarget.dataset.index
+          let id = e.currentTarget.dataset.id
+          let isChecked = this.list[index].isChecked
+
+          let userSpecialInfo = wx.getStorageSync('userSpecialInfo') || {}
+          let openId = userSpecialInfo.openid
+          const json = await api.cartCheckAll({
+            query: {
+              openId: openId,
+              goodsId: id,
+              check: !isChecked
+            },
+            method: 'PUT'
+          })
+          if (json.result !== true) {
+            console.error('shop-cart:selectTap --- 切换选择商品失败', json)
+            return
+          }
+
+          if (isChecked) {
+            this.totalPrice = (this.totalPrice * 100) - (parseInt(this.list[index].price * 100) * this.list[index].num)
+          } else {
+            this.totalPrice = (this.totalPrice * 100) + (parseInt(this.list[index].price * 100) * this.list[index].num)
+          }
+          this.list[index].isChecked = !isChecked
+          this.totalPrice /= 100
+
+          this.adjustCheck()
+          console.log('shop-cart:selectTap')
+        },
+        // 整理勾选状态
+        adjustCheck() {
+          this.allChecked = true
+          this.noSelect = true
+          for (let i = 0; i < this.list.length; i++) {
+            if (!this.list[i].isChecked) {
+              this.allChecked = false
+            } else {
+              this.noSelect = false
+            }
+          }
+        },
+        // 减
+        async jianBtnTap(e) {
+          if (this.operating) {
+            return
+          }
+          let index = e.currentTarget.dataset.index
+          let id = e.currentTarget.dataset.id
+          let num = this.list[index].num
+          let userSpecialInfo = wx.getStorageSync('userSpecialInfo') || {}
+          let openId = userSpecialInfo.openid
+
+          if (num > 1) {
+            num--
+          } else {
+            return
+          }
+
+          this.operating = true
+
+          const json = await api.updateCart({
+            query: {
+              openId: openId,
+              goodsId: id,
+              num: num
+            },
+            method: 'PUT'
+          })
+          if (json.result !== true) {
+            this.operating = false
+            console.error('shop-cart:jianBtnTap --- 减商品失败', json)
+            return
+          }
+
+          this.list[index].num = num
+          if (this.list[index].isChecked) {
+            this.totalPrice = (this.totalPrice * 100) - parseInt(this.list[index].price * 100)
+            this.totalPrice /= 100
+          }
+
+          this.adjustCheck()
+          this.operating = false
+          console.log('shop-cart:jianBtnTap')
+        },
+        // 加
+        async jiaBtnTap(e) {
+          if (this.operating) {
+            return
+          }
+          let index = e.currentTarget.dataset.index
+          let id = e.currentTarget.dataset.id
+          let num = this.list[index].num
+          let userSpecialInfo = wx.getStorageSync('userSpecialInfo') || {}
+          let openId = userSpecialInfo.openid
+          num++
+
+          this.operating = true
+
+          const json = await api.updateCart({
+            query: {
+              openId: openId,
+              goodsId: id,
+              num: num
+            },
+            method: 'PUT'
+          })
+          if (json.result !== true) {
+            this.operating = false
+            console.error('shop-cart:jiaBtnTap --- 加商品失败', json)
+            return
+          }
+
+          this.list[index].num = num
+          if (this.list[index].isChecked) {
+            this.totalPrice = (this.totalPrice * 100) + parseInt(this.list[index].price * 100)
+            this.totalPrice /= 100
+          }
+
+          this.adjustCheck()
+          this.operating = false
+          console.log('shop-cart:jiaBtnTap')
+        }
+      }
+    })
+</script>

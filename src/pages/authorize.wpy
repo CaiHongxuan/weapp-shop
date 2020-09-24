@@ -55,7 +55,7 @@
                     }
                 }
                 wx.switchTab({
-                    url: '/pages/category'
+                    url: '/pages/cart'
                 })
             }
         },

@@ -29,5 +29,7 @@ npm run build
 | 分类 | 搜索 | 商品列表 |
 | ![商品列表](./resources/goods-list2.jpg) | ![商品详情](./resources/good-detail1.jpg) | ![商品详情](./resources/good-detail2.jpg) |
 | 商品列表 | 商品详情 | 商品详情 |
-| ![商品详情](./resources/good-detail3.jpg) | ![评论](./resources/comment.jpg) |  |
-| 商品详情 | 评论 |  |
+| ![商品详情](./resources/good-detail3.jpg) | ![评论](./resources/comment.jpg) | ![购物车](./resources/cart1.jpg) |
+| 商品详情 | 评论 | 购物车 |
+| ![购物车](./resources/cart2.jpg) |  |  |
+| 购物车 |  |  |

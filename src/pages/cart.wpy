@@ -1,0 +1,32 @@
+<style lang="less">
+    page {
+        background: #f7f7f7;
+    }
+</style>
+
+<template>
+    <view class="cart">
+        <shopCart ref="shopCart"></shopCart>
+    </view>
+</template>
+
+<script>
+    import wepy from '@wepy/core'
+
+    wepy.page({
+      onShow() {
+        console.log('cart:onShow')
+        // 调用子组件方法
+        this.$refs.shopCart.getCartGoods()
+      }
+    })
+</script>
+
+<config>
+    {
+        navigationBarTitleText: '购物车',
+        usingComponents: {
+            shopCart: '~@/components/shop-cart'
+        }
+    }
+</config>

@@ -66,7 +66,8 @@
         'pages/index',
         'pages/search',
         'pages/goods-detail',
-        'pages/comment'
+        'pages/comment',
+        'pages/cart'
     ],
     window: {
         backgroundTextStyle: 'light',
@@ -91,7 +92,7 @@
             "iconPath": "static/images/icon_classify.png",
             "selectedIconPath": "static/images/icon_classify_active.png"
         }, {
-            "pagePath": "pages/index",
+            "pagePath": "pages/cart",
             "text": "购物车",
             "iconPath": "static/images/icon_shop_cart.png",
             "selectedIconPath": "static/images/icon_shop_cart_active.png"

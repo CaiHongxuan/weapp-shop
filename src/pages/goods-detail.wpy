@@ -566,7 +566,8 @@
               openId: openId,
               goodsId: this.goodsId,
               num: this.orderNum
-            }
+            },
+            method: 'POST'
           })
           this.hidden = true
           console.log('doTakeCart --- ', json)
@@ -580,7 +581,8 @@
               openId: openId,
               goodsId: this.goodsId,
               num: this.orderNum
-            }
+            },
+            method: 'POST'
           })
           this.hidden = true
           console.log('doTakeOrder --- ', json)
@@ -589,14 +591,13 @@
           })
         },
         async showConfirmData() {
-          // this.animation.height('768rpx').step()
-          this.animation.step()
+          this.animation.height('768rpx').step()
           this.animationData = this.animation.export()
           setTimeout(() => {
             this.hidden = false
             let systemInfo = wx.getStorageSync('systemInfo')
             this.winHeight = systemInfo.windowHeight
-          }, 100)
+          }, 10)
         },
         homePage() {
           wx.switchTab({
@@ -669,12 +670,11 @@
         },
         closeModel() {
           this.winHeight = '100%'
-          // this.animation.height(0).step()
-          this.animation.step()
+          this.animation.height(0).step()
           this.animationData = this.animation.export()
           setTimeout(() => {
             this.hidden = true
-          }, 100)
+          }, 10)
           console.log('closeModel --- ', this.animationData)
         },
         confirmTake() {

@@ -3,7 +3,7 @@
         margin-bottom: 100rpx;
     }
     .goods-info {
-        border-bottom: 1px solid #eee;
+        /*border-bottom: 1px solid #eee;*/
         display: flex;
         justify-content: space-between;
         padding: 40rpx 0 30rpx 0rpx;
@@ -162,7 +162,7 @@
         color: #e64340;
     }
     .list-box {
-        height: 236rpx;
+        height: 233rpx;
     }
     .all-select-box {
         width: 200rpx;
@@ -235,7 +235,7 @@
                     </view>
                     <view class="text-box">
                         <view class="goods-title">
-                            <navigator url="/pages/goods-detail?id={{item.id}}">{{item.title}}</navigator>
+                            <navigator url="/pages/goods-detail?id={{item.goodsId}}">{{item.title}}</navigator>
                         </view>
                         <view class="lable">
                             <view class="goods-lable">{{item.goodsSkuValName}}</view>
@@ -276,6 +276,7 @@
 <script>
     import wepy from '@wepy/core'
     import api from '@/api/api'
+    import common from '@/common/common'
 
     wepy.component({
       data: {
@@ -314,12 +315,11 @@
                 this.allChecked = false
               } else {
                 this.noSelect = false
-                this.totalPrice += parseInt(this.list[i].price * 100) * this.list[i].num
+                this.totalPrice = common.numberPlus(this.totalPrice, common.numberMultiple(this.list[i].price, this.list[i].num))
               }
             }
           }
-          this.totalPrice /= 100
-          console.log('shop-cart:getCartGoods --- ')
+          console.log('shop-cart:getCartGoods')
         },
         // 切换勾选全部商品
         async selectAll() {
@@ -346,54 +346,113 @@
           for (let i = 0; i < this.list.length; i++) {
             this.list[i].isChecked = !this.allChecked // 点击“全选”后，每个商品的勾选情况与当前的全选状态相反
             if (!this.allChecked) {
-              this.totalPrice += parseInt(this.list[i].price * 100) * this.list[i].num
+              this.totalPrice = common.numberPlus(this.totalPrice, common.numberMultiple(this.list[i].price, this.list[i].num))
             }
           }
-          this.totalPrice /= 100
           this.noSelect = this.allChecked // 点击“全选”后，此时的noSelect状态与当前的全选状态一致
           this.allChecked = !this.allChecked // "全选”状态切换
           console.log('shop-cart:selectAll --- ')
         },
         // 去结算
         toPayOrder() {
-          // todo
           console.log('shop-cart:toPyaOrder')
+          if (this.operating) {
+            return
+          }
+
+          let purType = 1
+          let prePurType = 1
+          let oneType = true
+          let index = 0
+          for (let i = 0; i < this.list.length; i++) {
+            if (this.list[i].isChecked) {
+              purType = this.list[i].type
+              if (index > 0) {
+                if (purType !== prePurType) {
+                  oneType = false
+                  break
+                }
+              }
+              prePurType = purType
+              index++
+            }
+          }
+          if (!oneType) {
+            console.error('shop-cart:toPyaOrder --- 先把补货的商品结算！')
+            return
+          }
+
+          this.operating = false
+          wx.navigateTo({
+            url: '/pages/confirm_order?purchaseType=' + purType
+          })
         },
-        // 删除某个商品
-        handleDelItem() {
-          // todo
-          console.log('shop-cart:handleDelItem')
+        // 删除购物车某个商品
+        async handleDelItem(itemData) {
+          console.log('shop-cart:handleDelItem', itemData)
+          if (this.operating) {
+            return
+          }
+          let id = itemData.id
+          let isChecked = itemData.isChecked
+
+          let userSpecialInfo = wx.getStorageSync('userSpecialInfo') || {}
+          let openId = userSpecialInfo.openid
+          const json = await api.delCart({
+            query: {
+              openId: openId,
+              cartIdList: [id]
+            },
+            method: 'DELETE'
+          })
+          if (json.result !== true) {
+            this.operating = false
+            console.error('shop-cart:handleDelItem --- 删除购物车商品失败', json)
+            return
+          }
+
+          this.list.splice(this.list.findIndex(item => item.id === id), 1)
+          if (isChecked) {
+            this.totalPrice = common.numberMinus(this.totalPrice, common.numberMultiple(itemData.price, itemData.num))
+          }
+
+          this.adjustCheck()
+          this.operating = false
         },
         // 切换选择商品
         async selectTap(e) {
+          if (this.operating) {
+            return
+          }
           let index = e.currentTarget.dataset.index
           let id = e.currentTarget.dataset.id
           let isChecked = this.list[index].isChecked
 
           let userSpecialInfo = wx.getStorageSync('userSpecialInfo') || {}
           let openId = userSpecialInfo.openid
-          const json = await api.cartCheckAll({
+          const json = await api.updateCart({
             query: {
               openId: openId,
-              goodsId: id,
+              cartId: id,
               check: !isChecked
             },
             method: 'PUT'
           })
           if (json.result !== true) {
+            this.operating = false
             console.error('shop-cart:selectTap --- 切换选择商品失败', json)
             return
           }
 
           if (isChecked) {
-            this.totalPrice = (this.totalPrice * 100) - (parseInt(this.list[index].price * 100) * this.list[index].num)
+            this.totalPrice = common.numberMinus(this.totalPrice, common.numberMultiple(this.list[index].price, this.list[index].num))
           } else {
-            this.totalPrice = (this.totalPrice * 100) + (parseInt(this.list[index].price * 100) * this.list[index].num)
+            this.totalPrice = common.numberPlus(this.totalPrice, common.numberMultiple(this.list[index].price, this.list[index].num))
           }
           this.list[index].isChecked = !isChecked
-          this.totalPrice /= 100
 
           this.adjustCheck()
+          this.operating = false
           console.log('shop-cart:selectTap')
         },
         // 整理勾选状态
@@ -430,7 +489,7 @@
           const json = await api.updateCart({
             query: {
               openId: openId,
-              goodsId: id,
+              cartId: id,
               num: num
             },
             method: 'PUT'
@@ -443,8 +502,7 @@
 
           this.list[index].num = num
           if (this.list[index].isChecked) {
-            this.totalPrice = (this.totalPrice * 100) - parseInt(this.list[index].price * 100)
-            this.totalPrice /= 100
+            this.totalPrice = common.numberMinus(this.totalPrice, this.list[index].price)
           }
 
           this.adjustCheck()
@@ -468,7 +526,7 @@
           const json = await api.updateCart({
             query: {
               openId: openId,
-              goodsId: id,
+              cartId: id,
               num: num
             },
             method: 'PUT'
@@ -481,8 +539,7 @@
 
           this.list[index].num = num
           if (this.list[index].isChecked) {
-            this.totalPrice = (this.totalPrice * 100) + parseInt(this.list[index].price * 100)
-            this.totalPrice /= 100
+            this.totalPrice = common.numberPlus(this.totalPrice, this.list[index].price)
           }
 
           this.adjustCheck()
@@ -492,3 +549,11 @@
       }
     })
 </script>
+
+<config>
+    {
+        usingComponents: {
+            swipeDelete:"~@/components/swipe-delete"
+        }
+    }
+</config>

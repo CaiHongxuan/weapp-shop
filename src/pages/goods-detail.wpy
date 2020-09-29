@@ -587,7 +587,7 @@
           this.hidden = true
           console.log('doTakeOrder --- ', json)
           wx.navigateTo({
-            url: '/pages/confirm_order?goodsId=' + this.goodsId
+            url: '/pages/confirm-order?goodsId=' + this.goodsId
           })
         },
         async showConfirmData() {

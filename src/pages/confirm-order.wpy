@@ -1,0 +1,254 @@
+<style lang="less">
+    .address {
+        border-top: 1px solid #efefef;
+        background: #fff;
+        .empty-address,
+        .address-info {
+            display: flex;
+            justify-content: space-between;
+            height: 103rpx;
+            align-items: center;
+            padding: 0rpx 35rpx;
+            .title {
+                color: #000;
+            }
+            .arrow {
+                color: #9a9a9a;
+            }
+            .user-info {
+                color: #1a1a1a;
+            }
+            .active-address {
+                margin-top: 20rpx;
+            }
+            .default {
+                color: #ea4a3a;
+            }
+        }
+        .address-info {
+            height: 150rpx;
+        }
+    }
+
+    .order-info {
+        .block {
+            display: flex;
+            justify-content: space-between;
+            height: 91rpx;
+            align-items: center;
+            padding: 0rpx 35rpx;
+            border-bottom: 1px solid #efefef;
+            background: #fff;
+            .txt {
+                font-size: 32rpx;
+            }
+            .left {
+                color: #000;
+            }
+            .right {
+                color: #9a9a9a;
+                text-align: right;
+            }
+            .price {
+                color: #ea4a3a;
+                font-size: 32rpx;
+            }
+            .tongji {
+                font-size: 32rpx;
+            }
+            .input-box {
+                flex: 1;
+                margin-left: 20rpx;
+            }
+            .total-jf{
+                font-size: 32rpx;
+            }
+        }
+    }
+    .list-box {
+        height: 250rpx;
+    }
+
+    .goods-info {
+        border-bottom: 1px solid #eee;
+        display: flex;
+        padding: 20rpx;
+        box-sizing: border-box;
+        position: relative;
+        background: #fff;
+    }
+
+    .goods-info .img-box {
+        width: 160rpx;
+        height: 160rpx;
+        overflow: hidden;
+        margin-right: 28rpx;
+        background-color: #d8d8d8;
+    }
+
+    .goods-info .text-box {
+        width: 480rpx;
+    }
+
+    .goods-info .text-box .goods-title {
+        font-size: 32rpx;
+        color: #414141;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 10rpx 20rpx 5rpx 0;
+    }
+
+    .goods-info .text-box .goods-label {
+        font-size: 26rpx;
+        color: #999;
+        height: 38rpx;
+        line-height: 38rpx;
+        margin: 8rpx 0 25rpx 0;
+    }
+
+    .goods-info .text-box .goods-price {
+        font-size: 34rpx;
+        color: #e64340;
+    }
+
+    .goods-info .text-box .buy-num {
+        width: 164rpx;
+        height: 48rpx;
+        line-height: 48rpx;
+        position: absolute;
+        right: 30rpx;
+        bottom: 30rpx;
+        display: flex;
+        font-size: 24rpx;
+        text-align: center
+    }
+
+    .goods-info .text-box .buy-num .jian-btn {
+        width: 48rpx;
+        height: 100%;
+        border-left: 1rpx solid #ccc;
+        border-bottom: 1rpx solid #ccc;
+        border-top: 1rpx solid #ccc;
+        border-bottom-left-radius: 6rpx;
+        border-top-left-radius: 6rpx;
+    }
+
+    .goods-info .text-box .buy-num .jian-btn.disabled {
+        background-color: #f5f5f9;
+        border-left: 1rpx solid #eee;
+        border-bottom: 1rpx solid #eee;
+        border-top: 1rpx solid #eee;
+        color: #ccc;
+    }
+
+    .goods-info .text-box .buy-num .jia-btn {
+        width: 48rpx;
+        height: 100%;
+        border-right: 1rpx solid #ccc;
+        border-bottom: 1rpx solid #ccc;
+        border-top: 1rpx solid #ccc;
+        border-bottom-right-radius: 6rpx;
+        border-top-right-radius: 6rpx;
+    }
+
+    .goods-info .text-box .buy-num .jia-btn.disabled {
+        background-color: #f5f5f9;
+        border-right: 1rpx solid #eee;
+        border-bottom: 1rpx solid #eee;
+        border-top: 1rpx solid #eee;
+        color: #ccc;
+    }
+
+    .goods-info .text-box .buy-num input {
+        width: 68rpx;
+        height: 48rpx;
+        min-height: 48rpx;
+        text-align: center;
+        font-size: 24rpx;
+        border: 1rpx solid #ccc;
+    }
+
+    .goods-info .img-box .img {
+        width: 160rpx;
+        height: 160rpx;
+    }
+
+    .pay-box {
+        margin-top: 104rpx;
+        padding: 0 22rpx;
+    }
+    .dk-jf {
+        text-align: right;
+        color: #666;
+    }
+</style>
+
+<template>
+    <view class="confirm-order">
+        <view class="address" @tap="setAddress">
+            <view class="empty-address" wx:if="{{!isExitAddress}}">
+                <view class="title">设置收货地址</view>
+                <view class="arrow">></view>
+            </view>
+            <view class="address-info" wx:else>
+                <view class="title">
+                    <view class="user-info">
+                        <text class="name">{{address.receiverName}}</text>
+                        <text class="phone">{{address.mobile}}</text>
+                    </view>
+                    <view class="active-address">
+                        <text class="default" wx:if="{{address.isDefault==1}}">[默认]</text>
+                        {{address.addressDetail}}
+                    </view>
+                </view>
+                <view class="arrow">></view>
+            </view>
+        </view>
+        <view class="spacing"></view>
+        
+        <view class="goodsList"></view>
+        
+        <view class="spacing"></view>
+        
+        <view class="order-info"></view>
+
+        <view class="pay-box">
+            <form report-submit bindsubmit="goPay">
+                <button class="button type-green" form-type="submit">生成订单</button>
+            </form>
+        </view>
+    </view>
+</template>
+
+<script>
+    import wepy from '@wepy/core'
+
+    wepy.page({
+      data: {
+        isExitAddress: false,
+        address: {
+          receiverName: '李某某',
+          mobile: '135******12',
+          isDefault: 1,
+          addressDetail: 'XX省 XX市 XX区 XX街道XX路X栋X楼202'
+        }
+      },
+      methods: {
+        setAddress() {
+          // todo
+          console.log('confirm-order:setAddress')
+        },
+        goPay() {
+          // todo
+          console.log('confirm-order:goPay')
+        }
+      }
+    })
+</script>
+
+<config>
+    {
+        navigationBarTitleText: '确认订单',
+    }
+</config>

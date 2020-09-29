@@ -67,7 +67,8 @@
             'pages/search',
             'pages/goods-detail',
             'pages/comment',
-            'pages/cart'
+            'pages/cart',
+            'pages/confirm-order'
         ],
         window: {
             backgroundTextStyle: 'light',

@@ -2,6 +2,7 @@
     page {
         height: 100%;
     }
+
     .authorize-container {
         height: 100%;
         background: #fff;
@@ -35,41 +36,44 @@
 </template>
 
 <script>
-    import wepy from '@wepy/core'
+  import wepy from '@wepy/core'
 
-    wepy.page({
-        async onLoad() {
-            let systemInfo = await wx.getSystemInfoSync()
-            wx.setStorageSync('systemInfo', systemInfo)
-            let res = await wx.getSetting()
-            if ((res.authSetting)['scope.userInfo']) {
-                let userInfo = wx.getStorageSync('userInfo')
-                if (!userInfo.nickName) {
-                    let data = await wx.getUserInfo()
-                    if (data) {
-                        wx.setStorageSync('userInfo', data.userInfo)
-                    }
-                    let res = await wx.login()
-                    if (res.code) {
-                        // todo
-                    }
-                }
-                wx.switchTab({
-                    url: '/pages/cart'
-                })
-            }
-        },
-        async gotUserInfo(e) {
-            if (e.detail.errMsg == 'getUserInfo:ok') {
-                let res = await wx.login()
-                if (res.code) {
-                    wx.setStorageSync('userInfo', e.detail.userInfo)
-                    let systemInfo = wx.getSystemInfoSync()
-                    wx.setStorageSync('systemInfo', systemInfo)
-                }
-            }
+  wepy.page({
+    async onLoad() {
+      let systemInfo = await wx.getSystemInfoSync()
+      wx.setStorageSync('systemInfo', systemInfo)
+      let res = await wx.getSetting()
+      if ((res.authSetting)['scope.userInfo']) {
+        let userInfo = wx.getStorageSync('userInfo')
+        if (!userInfo.nickName) {
+          let data = await wx.getUserInfo()
+          if (data) {
+            wx.setStorageSync('userInfo', data.userInfo)
+          }
+          let res = await wx.login()
+          if (res.code) {
+            // todo
+          }
         }
-    })
+        // wx.switchTab({
+        //   url: '/pages/index'
+        // })
+        wx.redirectTo({
+          url: '/pages/confirm-order'
+        })
+      }
+    },
+    async gotUserInfo(e) {
+      if (e.detail.errMsg === 'getUserInfo:ok') {
+        let res = await wx.login()
+        if (res.code) {
+          wx.setStorageSync('userInfo', e.detail.userInfo)
+          let systemInfo = wx.getSystemInfoSync()
+          wx.setStorageSync('systemInfo', systemInfo)
+        }
+      }
+    }
+  })
 </script>
 
 <config>

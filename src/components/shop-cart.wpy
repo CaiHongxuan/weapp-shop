@@ -356,7 +356,7 @@
         // 去结算
         toPayOrder() {
           console.log('shop-cart:toPyaOrder')
-          if (this.operating) {
+          if (this.operating || this.noSelect) {
             return
           }
 
@@ -384,7 +384,7 @@
 
           this.operating = false
           wx.navigateTo({
-            url: '/pages/confirm_order?purchaseType=' + purType
+            url: '/pages/confirm-order?purchaseType=' + purType
           })
         },
         // 删除购物车某个商品

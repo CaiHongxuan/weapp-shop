@@ -393,6 +393,7 @@
           if (this.operating) {
             return
           }
+          this.operating = true
           let id = itemData.id
           let isChecked = itemData.isChecked
 
@@ -424,6 +425,7 @@
           if (this.operating) {
             return
           }
+          this.operating = true
           let index = e.currentTarget.dataset.index
           let id = e.currentTarget.dataset.id
           let isChecked = this.list[index].isChecked
